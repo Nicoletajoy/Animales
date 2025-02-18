@@ -1,0 +1,27 @@
+﻿<Window x:Class="Animales.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Animales"
+        mc:Ignorable="d"
+        Title="Animales" Height="450" Width="800">
+    <Grid Background="AliceBlue">
+        <Label Content="Nombre del animal:" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="nombreTextBox" HorizontalAlignment="Left" Margin="140,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Especie:" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="especieComboBox" HorizontalAlignment="Left" Margin="140,58,0,0" VerticalAlignment="Top" Width="120" 
+                  ItemsSource="{Binding Animales}" DisplayMemberPath="NombreEspecie" SelectedItem="{Binding AnimalSeleccionado}"/>
+
+        <Button x:Name="darOrdenButton" Content="Dar Orden" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Width="100" Click="darOrdenButton_Click"/>
+        <TextBlock x:Name="ordenTextBlock" HorizontalAlignment="Left" Margin="20,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="60"/>
+
+        <Label Content="Habilidad:" HorizontalAlignment="Left" Margin="20,220,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="habilidadTextBox" HorizontalAlignment="Left" Margin="140,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+                 Text="{Binding AnimalSeleccionado.Habilidad, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <ComboBox x:Name="habilidadComboBox" HorizontalAlignment="Left" Margin="270,218,0,0" VerticalAlignment="Top" Width="100"
+                  ItemsSource="{Binding Habilidades}" SelectedItem="{Binding AnimalSeleccionado.Habilidad}"/>
+    </Grid>
+</Window>
